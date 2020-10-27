@@ -1,0 +1,7 @@
+
+.icon-plus:before { content: '\2b'; } /* '+' */
+.icon-minus:before { content: '\2d'; } /* '-' */
+.icon-left:before { content: '\e00d'; } /* '' */
+.icon-down-open:before { content: '\e75c'; } /* '' */
+.icon-plus-squared:before { content: '\f0fe'; } /* '' */
+.icon-direction:before { content: '\f124'; } /* '' */
