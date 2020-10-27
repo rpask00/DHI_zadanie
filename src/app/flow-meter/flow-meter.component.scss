@@ -1,13 +1,6 @@
-.box {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    z-index: 2;
-}
-
 nav {
-    height: 5%;
-    width: 100%;
+    height: 5vh;
+    width: 100vw;
     background-color: #fff;
     display: flex;
     font-family: 'Poppins', sans-serif;
@@ -19,6 +12,8 @@ nav {
         display: flex;
         background-color: #fff;
         margin: 3px;
+        min-width: 180px;
+        cursor: pointer;
 
         p {
             margin: 5px 0 0 5px;
@@ -30,6 +25,11 @@ nav {
                 font-size: 10px;
             }
         }
+
+        i {
+            margin-top: 7px;
+            margin-left: 70px;
+        }
     }
 
     h1 {
@@ -37,7 +37,7 @@ nav {
         text-align: center;
         width: 90%;
         margin: 3px;
-        // line-height: 50px;
+        line-height: 40px;
     }
 }
 
@@ -45,9 +45,106 @@ nav {
     z-index: 2;
     position: absolute;
     right: 0;
-    height: 95%;
-    width: 60px;
+    height: 100%;
     background-color: rgb(248, 248, 248);
+    display: flex;
+    transform: translateX(260px);
+    transition: .2s;
+    font-family: 'Poppins', sans-serif;
+
+    .icons {
+        width: 60px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        color: rgb(34, 87, 116);
+
+        i {
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            font-size: 30px;
+            height: 60px;
+            line-height: 60px;
+            margin-top: 20px;
+        }
+
+        .add {
+            margin-top: 200px;
+            background-color: rgb(11, 69, 102);
+            color: white;
+        }
+
+    }
 
 
+    .form-box {
+        width: 260px;
+        border-left: 1px solid rgb(219, 228, 233);
+
+        .blue {
+            color: rgb(82, 164, 236)
+        }
+
+        h1 {
+            margin-top: 10px;
+            color: rgb(34, 87, 116);
+            font-size: 25px;
+            height: 50px;
+            text-align: center;
+            border-bottom: 1px solid rgb(219, 228, 233);
+        }
+
+        h3 {
+            margin-top: 10px;
+            color: rgb(34, 87, 116);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        .instrukcja {
+            padding: 0 10px 0 10px;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgb(219, 228, 233);
+
+        }
+
+        .matbox {
+            width: 100%;
+        }
+
+        .position {
+            display: flex;
+
+            mat-form-field {
+                width: 45%;
+                margin: 2.5%;
+            }
+        }
+
+        .btns {
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-evenly;
+
+            .clean {
+                border: 2px solid rgb(0, 164, 236);
+                color: rgb(0, 164, 236);
+            }
+
+            .confirm {
+                background-color: rgb(0, 164, 236);
+                color: white;
+            }
+        }
+    }
+
+}
+
+.show {
+    transform: translateX(0px);
 }

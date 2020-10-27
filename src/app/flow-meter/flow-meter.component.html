@@ -1,22 +1,71 @@
-<div class="box">
   <nav>
     <div class="dhi">
-      <div class="textContent">
-        <p>
-          <b>NLM</b>
-          <br>
-          <span>POWERED BY DHI</span>
-        </p>
-      </div>
-      <div class="arrowbox">
-
-      </div>
+      <p>
+        <b>NLM</b>
+        <br>
+        <span>POWERED BY DHI</span>
+      </p>
+      <i class="demo-icon icon-down-open"></i>
     </div>
     <h1>MAPA</h1>
   </nav>
 
   <div class="panel">
-    <div class="control"></div>
-  </div>
+    <div class="icons">
+      <i class="demo-icon icon-direction"></i>
+      <i class="demo-icon icon-plus" (click)='showForm()'></i>
+      <i class="demo-icon icon-minus minus" (click)='hideForm()'></i>
+      <i class="demo-icon icon-plus-squared add"></i>
+    </div>
+    <div class="form-box">
+      <h1><i class="demo-icon icon-left"></i>Przepływomierz</h1>
+      <div class="instrukcja">
+        <h3>Instrukcja</h3>
+        <p>Wypełnij dane i kliknij przycisk <span class="blue">dodaj punk</span>. Następnie wybierz punkt na mapie i
+          kliknij <span class="blue">zatwierdź</span></p>
+      </div>
+      <div class="instrukcja">
+        <h3>Dodaj nowy przepływomierz</h3>
+        <form [formGroup]="flow_Form">
+          <mat-form-field class='matbox'>
+            <mat-label>Nazwa</mat-label>
+            <input formControlName='name' matInput placeholder="podaj nazwę">
+          </mat-form-field>
 
-</div>
+          <mat-form-field class='matbox' appearance="fill">
+            <mat-label>Typ</mat-label>
+            <mat-select formControlName='type'>
+              <mat-option *ngFor="let option of options" [value]='option[1]'>
+                {{option[0]}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class='matbox'>
+            <mat-label>Średia wartość Przepływu (m3/dzień)</mat-label>
+            <textarea formControlName='value' matInput></textarea>
+          </mat-form-field>
+
+          <div class="position">
+            <mat-form-field>
+              <mat-label>Lat</mat-label>
+              <input (change)='updatelatLong()' formControlName='lat' [(ngModel)]="tempPin[0]" matInput
+                placeholder="50.020604">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Long</mat-label>
+              <input (change)='updatelatLong()' formControlName='long' [(ngModel)]="tempPin[1]" matInput
+                placeholder="22.015665">
+            </mat-form-field>
+
+          </div>
+
+          <div class="btns">
+            <button mat-raised-button class='clean'>Wyczyść</button>
+            <button mat-raised-button class='confirm'>Zatwierdź</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
