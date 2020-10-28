@@ -9,7 +9,6 @@ app.use(express.static(__dirname + '/dist/dhi'));
 
 app.get('/*', function (req, res) {
     res.sendFile('index.html', { root: 'dist/dhi/' });
-    console.log(__dirname)
     // res.sendFile(path.join(__dirname + '/dist/dhi/index.html'));
 });
 
