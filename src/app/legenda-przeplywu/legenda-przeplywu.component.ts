@@ -17,12 +17,10 @@ export class LegendaPrzeplywuComponent implements OnInit {
     ['Sprzedaż - odczyt ręczny', '../../assets/pins/pin7.png'],
     ['Przepływ wirtualny', '../../assets/pins/pin8.png'],
   ])
-  pins
-  isopen: boolean = true
+  pins = []
+  isopen: boolean = false
 
-  constructor() {
-    this.pins = JSON.parse(this.pins_)
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

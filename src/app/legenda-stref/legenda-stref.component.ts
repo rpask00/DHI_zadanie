@@ -22,12 +22,10 @@ export class LegendaStrefComponent implements OnInit {
     ['90', '#ed1908'],
     ['100', '#ff0000'],
   ])
-  squares
-  isopen: boolean = true
+  squares = []
+  isopen: boolean = false
 
-  constructor() {
-    this.squares = JSON.parse(this.squares_)
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

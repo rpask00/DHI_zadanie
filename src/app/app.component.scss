@@ -1,14 +1,32 @@
+.legendy {
+    position: absolute;
+    top: 70px;
+    width: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    right: 340px;
+    flex-wrap: wrap;
+    z-index: 2;
+}
+
 app-legenda-przeplywu,
 app-legenda-stref {
-    position: absolute;
-    z-index: 3;
-    top: 70px
+    margin: 10px;
 }
 
-app-legenda-przeplywu {
-    right: 350px;
+
+@media (max-width: 800px) {
+    .legendy {
+        width: 200px;
+    }
+
 }
 
-app-legenda-stref {
-    right: 600px;
+
+@media (max-width: 550px) {
+    .legendy {
+        right: 80px;
+        width: 200px;
+    }
+
 }

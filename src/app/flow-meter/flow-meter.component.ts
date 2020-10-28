@@ -30,8 +30,6 @@ export class FlowMeterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.showForm()
-
     this.flow_Form = new FormGroup({
       name: new FormControl(null, {
         updateOn: "change",
