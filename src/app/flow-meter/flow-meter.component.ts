@@ -60,12 +60,10 @@ export class FlowMeterComponent implements OnInit {
 
   showForm() {
     document.querySelector('.panel').classList.add('show')
-    this.mapManagerSV.toggleFlowMeterPanel(true)
   }
 
   hideForm() {
     document.querySelector('.panel').classList.remove('show')
-    this.mapManagerSV.toggleFlowMeterPanel(false)
   }
 
   updatelatLong() {
@@ -83,6 +81,7 @@ export class FlowMeterComponent implements OnInit {
   clearForm(e?) {
     if (e) e.preventDefault()
     this.flow_Form.reset()
+    this.mapManagerSV.removeTempin()
   }
 
   confirm() {

@@ -8,8 +8,8 @@ export class MapmanagerService {
 
   tempPin = new BehaviorSubject<String[]>(['', '']);
   tempPinColor = new BehaviorSubject<number>(0);
-  FlowMeterStatus = new BehaviorSubject<Boolean>(true);
   pinSaveEmitter = new Subject<void>();
+  clearFormEmitter = new Subject<void>();
   constructor() { }
 
   updateTEmpPin(latlong: String[]) {
@@ -20,12 +20,14 @@ export class MapmanagerService {
     this.tempPinColor.next(color)
   }
 
-  toggleFlowMeterPanel(isopen: Boolean) {
-    this.FlowMeterStatus.next(isopen)
-  }
+ 
 
   addPin() {
     this.pinSaveEmitter.next()
+  }
+
+  removeTempin() {
+    this.clearFormEmitter.next()
   }
 
   get tempPin$() {
@@ -34,9 +36,5 @@ export class MapmanagerService {
 
   get tempPinColor$() {
     return this.tempPinColor.asObservable()
-  }
-
-  get FlowMeterStatus$() {
-    return this.FlowMeterStatus.asObservable()
   }
 }

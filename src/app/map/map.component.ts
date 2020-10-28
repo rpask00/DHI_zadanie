@@ -22,9 +22,7 @@ export class MapComponent implements OnInit {
   vectorSource;
   vectorLayer;
   rasterLayer;
-  madrid: any;
   tempPin_id: String = '_';
-  FlowMeterStatus: Boolean = true
   tempPinColors = [
     [185, 185, 185],
     [3, 215, 8],
@@ -47,20 +45,12 @@ export class MapComponent implements OnInit {
 
     this.initilizeMap();
     this.map.on('singleclick', evt => {
-      if (this.FlowMeterStatus)
-        this.makeTempPin(olProj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326'))
+      this.makeTempPin(olProj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326'))
     });
 
     this.mapManagerSV.tempPin$.subscribe(tempPin => {
       if (tempPin.join('_') != this.tempPin_id)
         this.makeTempPin(tempPin)
-    })
-
-    this.mapManagerSV.FlowMeterStatus$.subscribe(status => {
-      this.FlowMeterStatus = status
-      if (!status && this.tempPin_id != '_') {
-        this.removePin(this.tempPin_id)
-      }
     })
 
     this.mapManagerSV.tempPinColor$.subscribe(colorIndex => {
@@ -73,6 +63,7 @@ export class MapComponent implements OnInit {
     })
 
     this.mapManagerSV.pinSaveEmitter.subscribe(() => this.savePin())
+    this.mapManagerSV.clearFormEmitter.subscribe(() => this.removePin(this.tempPin_id))
   }
 
   makeTempPin(latLong: String[]) {
@@ -108,31 +99,17 @@ export class MapComponent implements OnInit {
   }
 
   removePin(id: String) {
-    let feature = this.vectorLayer.getSource().getFeatureById(id)
-    this.vectorLayer.getSource().removeFeature(feature)
-    this.tempPin_id = '_'
+    if (id != '_') {
+      let feature = this.vectorLayer.getSource().getFeatureById(id)
+      this.vectorLayer.getSource().removeFeature(feature)
+      this.tempPin_id = '_'
+    }
   }
 
 
   initilizeMap() {
-    this.madrid = new Feature({
-      geometry: new Point(fromLonLat([-3.683333, 40.4])),
-      name: 'Somewhere near Nottingham',
-
-    });
-
-    this.madrid.setStyle(new Style({
-      image: new Icon(({
-        color: [0, 0, 0],
-        crossOrigin: 'anonymous',
-        src: 'assets/pins/pin.png',
-        imgSize: [40, 70]
-      }))
-    }));
-
-
     this.vectorSource = new VectorSource({
-      features: [this.madrid]
+      features: []
     });
 
     this.vectorLayer = new VectorLayer({
@@ -149,8 +126,7 @@ export class MapComponent implements OnInit {
       ],
       view: new View({
         center: fromLonLat([22.395065, 49.381032]),
-        zoom: 2
-        // zoom: 13
+        zoom: 5
       })
     });
   }
