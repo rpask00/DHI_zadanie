@@ -49,13 +49,11 @@
           <div class="position">
             <mat-form-field>
               <mat-label>Lat</mat-label>
-              <input type="number" (change)='updatelatLong()' formControlName='lat' [(ngModel)]="tempPin[0]" matInput
-                placeholder="50.020604">
+              <input type="number" (change)='updatelatLong()' formControlName='lat' matInput placeholder="50.020604">
             </mat-form-field>
             <mat-form-field>
               <mat-label>Long</mat-label>
-              <input type="number" (change)='updatelatLong()' formControlName='long' [(ngModel)]="tempPin[1]" matInput
-                placeholder="22.015665">
+              <input type="number" (change)='updatelatLong()' formControlName='long' matInput placeholder="22.015665">
             </mat-form-field>
 
           </div>

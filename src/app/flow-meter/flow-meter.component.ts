@@ -10,7 +10,7 @@ import { MapmanagerService } from '../SERVICES/mapmanager.service';
 export class FlowMeterComponent implements OnInit {
 
   flow_Form: FormGroup;
-  tempPin: String[]
+  latlong: String
 
   options = [
     ['Przepływ nieznany', 0],
@@ -25,9 +25,7 @@ export class FlowMeterComponent implements OnInit {
 
   constructor(
     private mapManagerSV: MapmanagerService
-  ) {
-    this.mapManagerSV.tempPin$.subscribe(tempPin => this.tempPin = tempPin)
-  }
+  ) { }
 
   ngOnInit(): void {
     this.flow_Form = new FormGroup({
@@ -54,6 +52,22 @@ export class FlowMeterComponent implements OnInit {
         validators: [Validators.required]
       })
     });
+
+
+
+    this.mapManagerSV.tempPin$.subscribe(tempPin => {
+      this.flow_Form.controls['lat'].setValue(tempPin[0])
+      this.flow_Form.controls['long'].setValue(tempPin[1])
+    })
+
+    this.flow_Form.valueChanges.subscribe(value => {
+      let ll = value.lat + '_' + value.long
+      if (ll != this.latlong) {
+        this.latlong = ll
+        this.updatelatLong()
+
+      }
+    })
   }
 
   showForm() {
