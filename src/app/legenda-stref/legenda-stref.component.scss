@@ -1,0 +1,54 @@
+.box {
+    background-color: rgb(248, 248, 248);
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    color: rgb(11, 69, 102);
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        .row {
+            margin: 3px;
+
+            label {
+                margin-right: 10px;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+            margin-right: 10px;
+            display: flex;
+            justify-content: flex-end;
+
+
+            .square {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+    }
+
+    .controller {
+        p {
+            margin: 0;
+            padding: 0;
+            font-weight: 500;
+        }
+
+        height: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: #fff;
+
+    }
+}
+
+.closed {
+    transform: rotate(180deg);
+}

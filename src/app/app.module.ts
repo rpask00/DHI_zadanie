@@ -9,6 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { LegendaStrefComponent } from './legenda-stref/legenda-stref.component';
+import { LegendaPrzeplywuComponent } from './legenda-przeplywu/legenda-przeplywu.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -16,7 +19,9 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
   declarations: [
     AppComponent,
     MapComponent,
-    FlowMeterComponent
+    FlowMeterComponent,
+    LegendaStrefComponent,
+    LegendaPrzeplywuComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,8 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
     MatSelectModule,
     MatButtonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

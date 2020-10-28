@@ -1,0 +1,13 @@
+<div class="box">
+  <div class="content">
+    <div class="row" *ngFor='let pin of pins'>
+      <label>{{pin[0]}}</label>
+      <img [src]="pin[1]" [alt]='pin[0]'>
+    </div>
+  </div>
+  <div class="controller" (click)='toggleView()'>
+    <p>Legenda przepływu</p>
+    <i [class.closed]='isopen' class="demo-icon icon-down-open"></i>
+  </div>
+</div>
+

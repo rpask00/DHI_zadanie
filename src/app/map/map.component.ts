@@ -23,23 +23,11 @@ export class MapComponent implements OnInit {
   vectorLayer;
   rasterLayer;
   tempPin_id: String = '_';
-  tempPinColors = [
-    [185, 185, 185],
-    [3, 215, 8],
-    [215, 93, 3],
-    [11, 69, 102],
-    [3, 215, 167],
-    [187, 3, 215],
-    [120, 0, 0],
-    [84, 84, 84],
-  ]
-  tempPinColor: number[]
+  tempPinColor: string
 
   constructor(
     private mapManagerSV: MapmanagerService
-  ) {
-    // this.tempPinColor = this.tempPinColors[0]
-  }
+  ) {}
 
   ngOnInit() {
 
@@ -54,7 +42,8 @@ export class MapComponent implements OnInit {
     })
 
     this.mapManagerSV.tempPinColor$.subscribe(colorIndex => {
-      this.tempPinColor = this.tempPinColors[colorIndex]
+      colorIndex++
+      this.tempPinColor = 'assets/pins/pin' + colorIndex + '.png'
       if (this.tempPin_id != '_') {
         let latlong = this.tempPin_id.split('_')
         this.makeTempPin(latlong)
@@ -78,7 +67,7 @@ export class MapComponent implements OnInit {
     this.tempPin_id = '_'
   }
 
-  addpin(latLong: String[], color = [0, 0, 0]) {
+  addpin(latLong: String[], color = 'assets/pins/pin1.png') {
     this.tempPin_id = latLong.join('_')
     let tempPin = new Feature({
       geometry: new Point(fromLonLat(latLong))
@@ -87,9 +76,8 @@ export class MapComponent implements OnInit {
 
     tempPin.setStyle(new Style({
       image: new Icon(({
-        color: color,
         crossOrigin: 'anonymous',
-        src: 'assets/pins/pin.png',
+        src: color,
         imgSize: [40, 70]
       }))
     }));

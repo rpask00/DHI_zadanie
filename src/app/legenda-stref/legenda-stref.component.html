@@ -1,0 +1,12 @@
+<div class="box">
+  <div  class="content">
+    <div class="row" *ngFor='let square of squares'>
+      <label>{{square[0]}}</label>
+      <div [ngStyle]="{'background-color': square[1]}" class="square"></div>
+    </div>
+  </div>
+  <div class="controller" (click)='toggleView()'>
+    <p>Legenda stref</p>
+    <i [class.closed]='isopen' class="demo-icon icon-down-open"></i>
+  </div>
+</div>
