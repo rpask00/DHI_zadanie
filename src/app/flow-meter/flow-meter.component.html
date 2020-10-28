@@ -34,7 +34,7 @@
 
           <mat-form-field class='matbox' appearance="fill">
             <mat-label>Typ</mat-label>
-            <mat-select formControlName='type'>
+            <mat-select (selectionChange)='updateColor()' formControlName='type'>
               <mat-option *ngFor="let option of options" [value]='option[1]'>
                 {{option[0]}}
               </mat-option>
@@ -43,26 +43,28 @@
 
           <mat-form-field class='matbox'>
             <mat-label>Średia wartość Przepływu (m3/dzień)</mat-label>
-            <textarea formControlName='value' matInput></textarea>
+            <input type="number" formControlName='value' matInput>
           </mat-form-field>
 
           <div class="position">
             <mat-form-field>
               <mat-label>Lat</mat-label>
-              <input (change)='updatelatLong()' formControlName='lat' [(ngModel)]="tempPin[0]" matInput
+              <input type="number" (change)='updatelatLong()' formControlName='lat' [(ngModel)]="tempPin[0]" matInput
                 placeholder="50.020604">
             </mat-form-field>
             <mat-form-field>
               <mat-label>Long</mat-label>
-              <input (change)='updatelatLong()' formControlName='long' [(ngModel)]="tempPin[1]" matInput
+              <input type="number" (change)='updatelatLong()' formControlName='long' [(ngModel)]="tempPin[1]" matInput
                 placeholder="22.015665">
             </mat-form-field>
 
           </div>
 
           <div class="btns">
-            <button mat-raised-button class='clean'>Wyczyść</button>
-            <button mat-raised-button class='confirm'>Zatwierdź</button>
+            <button mat-raised-button class='clean' (click)='clearForm($event)'>Wyczyść</button>
+            <button (click)='confirm()' mat-raised-button class='confirm' [disabled]='!flow_Form.valid'
+              [class.disabled]='!flow_Form.valid'>Zatwierdź
+            </button>
           </div>
         </form>
 

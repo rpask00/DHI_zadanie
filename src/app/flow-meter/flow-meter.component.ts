@@ -75,8 +75,19 @@ export class FlowMeterComponent implements OnInit {
       this.mapManagerSV.updateTEmpPin([lat, long])
   }
 
-  confirm() {
+  updateColor() {
+    let color = this.flow_Form.value['type']
+    this.mapManagerSV.updateTempPinColor(color)
+  }
 
+  clearForm(e?) {
+    if (e) e.preventDefault()
+    this.flow_Form.reset()
+  }
+
+  confirm() {
+    this.mapManagerSV.addPin()
+    this.clearForm()
   }
 
 
