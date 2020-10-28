@@ -72,10 +72,12 @@ export class FlowMeterComponent implements OnInit {
 
   showForm() {
     document.querySelector('.panel').classList.add('show')
+    document.querySelector('.wrapper').classList.add('wrappershow')
   }
 
   hideForm() {
     document.querySelector('.panel').classList.remove('show')
+    document.querySelector('.wrapper').classList.remove('wrappershow')
   }
 
   updatelatLong() {

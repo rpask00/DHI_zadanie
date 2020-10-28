@@ -10,62 +10,65 @@
     <h1>MAPA</h1>
   </nav>
 
-  <div class="panel">
-    <div class="icons">
-      <i class="demo-icon icon-direction"></i>
-      <i class="demo-icon icon-plus" (click)='showForm()'></i>
-      <i class="demo-icon icon-minus minus" (click)='hideForm()'></i>
-      <i class="demo-icon icon-plus-squared add"></i>
-    </div>
-    <div class="form-box">
-      <h1><i class="demo-icon icon-left"></i>Przepływomierz</h1>
-      <div class="instrukcja">
-        <h3>Instrukcja</h3>
-        <p>Wypełnij dane i kliknij przycisk <span class="blue">dodaj punk</span>. Następnie wybierz punkt na mapie i
-          kliknij <span class="blue">zatwierdź</span></p>
+  <div class="wrapper">
+    <div class="panel">
+      <div class="icons">
+        <i class="demo-icon icon-direction"></i>
+        <i class="demo-icon icon-plus" (click)='showForm()'></i>
+        <i class="demo-icon icon-minus minus" (click)='hideForm()'></i>
+        <i class="demo-icon icon-plus-squared add"></i>
       </div>
-      <div class="instrukcja">
-        <h3>Dodaj nowy przepływomierz</h3>
-        <form [formGroup]="flow_Form">
-          <mat-form-field class='matbox'>
-            <mat-label>Nazwa</mat-label>
-            <input formControlName='name' matInput placeholder="podaj nazwę">
-          </mat-form-field>
-
-          <mat-form-field class='matbox' appearance="fill">
-            <mat-label>Typ</mat-label>
-            <mat-select (selectionChange)='updateColor()' formControlName='type'>
-              <mat-option *ngFor="let option of options" [value]='option[1]'>
-                {{option[0]}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field class='matbox'>
-            <mat-label>Średia wartość Przepływu (m3/dzień)</mat-label>
-            <input type="number" formControlName='value' matInput>
-          </mat-form-field>
-
-          <div class="position">
-            <mat-form-field>
-              <mat-label>Lat</mat-label>
-              <input type="number" (change)='updatelatLong()' formControlName='lat' matInput placeholder="50.020604">
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Long</mat-label>
-              <input type="number" (change)='updatelatLong()' formControlName='long' matInput placeholder="22.015665">
+      <div class="form-box">
+        <h1><i class="demo-icon icon-left"></i>Przepływomierz</h1>
+        <div class="instrukcja">
+          <h3>Instrukcja</h3>
+          <p>Wypełnij dane i kliknij przycisk <span class="blue">dodaj punk</span>. Następnie wybierz punkt na mapie i
+            kliknij <span class="blue">zatwierdź</span></p>
+        </div>
+        <div class="instrukcja">
+          <h3>Dodaj nowy przepływomierz</h3>
+          <form [formGroup]="flow_Form">
+            <mat-form-field class='matbox'>
+              <mat-label>Nazwa</mat-label>
+              <input formControlName='name' matInput placeholder="podaj nazwę">
             </mat-form-field>
 
-          </div>
+            <mat-form-field class='matbox' appearance="fill">
+              <mat-label>Typ</mat-label>
+              <mat-select (selectionChange)='updateColor()' formControlName='type'>
+                <mat-option *ngFor="let option of options" [value]='option[1]'>
+                  {{option[0]}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-          <div class="btns">
-            <button mat-raised-button class='clean' (click)='clearForm($event)'>Wyczyść</button>
-            <button (click)='confirm()' mat-raised-button class='confirm' [disabled]='!flow_Form.valid'
-              [class.disabled]='!flow_Form.valid'>Zatwierdź
-            </button>
-          </div>
-        </form>
+            <mat-form-field class='matbox'>
+              <mat-label>Średia wartość Przepływu (m3/dzień)</mat-label>
+              <input type="number" formControlName='value' matInput>
+            </mat-form-field>
+
+            <div class="position">
+              <mat-form-field>
+                <mat-label>Lat</mat-label>
+                <input type="number" (change)='updatelatLong()' formControlName='lat' matInput placeholder="50.020604">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Long</mat-label>
+                <input type="number" (change)='updatelatLong()' formControlName='long' matInput placeholder="22.015665">
+              </mat-form-field>
+
+            </div>
+
+            <div class="btns">
+              <button mat-raised-button class='clean' (click)='clearForm($event)'>Wyczyść</button>
+              <button (click)='confirm()' mat-raised-button class='confirm' [disabled]='!flow_Form.valid'
+                [class.disabled]='!flow_Form.valid'>Zatwierdź
+              </button>
+            </div>
+          </form>
+
+        </div>
 
       </div>
-
     </div>
+  </div>
